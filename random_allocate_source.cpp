@@ -38,8 +38,9 @@ int main(int argc, char* argv[]){
     // do an operation on them
     bool resp(false);
     for (long long i = 0; i < n_objects; i++){
+        
+        objects[i] = new HeapObject;
         for (int let_idx = 0; let_idx < 10; let_idx++){
-            objects[i] = new HeapObject;
             resp = objects[i]->frobnicate(LETTERS[let_idx]);
         }
     }

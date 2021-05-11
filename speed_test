@@ -13,7 +13,7 @@ echo "pwd: $PWD"
 TMPFILE="tmp"
 for exe in $RANDOM_EXE $PREALLOCATE_EXE
     do
-        for memory_amt in 10 100 1000 2000 3000 4000
+        for memory_amt in 10 100 1000
             do
                 /usr/bin/time -v -o $TMPFILE ./${exe} $memory_amt;
                 cat $TMPFILE >> ${exe}_timings;
