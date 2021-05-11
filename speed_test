@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# speed check and massif chart gen
+
+RANDOM_EXE="random_allocate"
+PREALLOCATE_EXE="pre_allocate"
+
+echo "RANDOM_EXE is set to $RANDOM_EXE"
+echo "PREALLOCATE_EXE is set to $PREALLOCATE_EXE"
+PWD=`pwd`
+echo "pwd: $PWD"
+
+TMPFILE="tmp"
+for exe in $RANDOM_EXE $PREALLOCATE_EXE
+    do
+        for memory_amt in 10 100 1000 10000
+            do
+                /usr/bin/time -o $TMPFILE ./${exe} $memory_amt;
+                cat $TMPFILE >> ${exe}_timings;
+            done
+        valgrind --tool=massif "./${exe} $memory_amt" >> massif_${exe}
+        echo "Done with $exe"
+    done
+
+rm $TMPFILE
+echo "Done"
+        
+
+
