@@ -1,6 +1,6 @@
 // A 512 byte object
 
-const int SIZE(11);
+const int SIZE(512);
 const char LETTERS[10] = {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'
 };
