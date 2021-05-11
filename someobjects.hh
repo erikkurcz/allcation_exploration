@@ -12,7 +12,7 @@ class HeapObject {
 
     public:
         HeapObject(void){ };
-        bool frobnicate(char let){
+        bool frobnicate(char let) volatile {
             for (int i = 0; i < SIZE; i++){
                 data[i] = let;
             }
